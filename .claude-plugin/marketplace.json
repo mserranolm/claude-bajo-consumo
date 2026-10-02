@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-bajo-consumo",
+  "version": "0.1.0",
+  "description": "Configuración de Claude Code de bajo consumo de tokens en un solo paquete: auditoría, instalador, estilo conciso y statusline.",
+  "owner": { "name": "mserranolm" },
+  "plugins": [
+    {
+      "name": "bajo-consumo",
+      "description": "Skill /ahorro-tokens (audita e instala caveman, context-mode, haiku-shunt, auto-compact y statusline) y output style 'concisa'.",
+      "version": "0.1.0",
+      "author": { "name": "mserranolm" },
+      "source": "./plugins/bajo-consumo",
+      "category": "developer-tools"
+    }
+  ]
+}
