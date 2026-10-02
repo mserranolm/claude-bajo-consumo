@@ -1,6 +1,6 @@
 {
   "name": "bajo-consumo",
-  "version": "0.1.0",
-  "description": "Audita dónde se van los tokens en Claude Code, instala la configuración de bajo consumo y trae el output style 'concisa'.",
+  "version": "0.2.0",
+  "description": "Audita dónde se van los tokens en Claude Code, instala la configuración de bajo consumo y activa el output style integrado Concise.",
   "author": { "name": "mserranolm" }
 }

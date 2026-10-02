@@ -30,7 +30,7 @@ Dos scripts en `scripts/` (relativos al directorio base de esta skill). Ejecutar
 - **caveman**: respuestas ~65-75% más cortas sin tocar código ni errores literales.
 - **haiku-shunt**: lecturas grandes (por defecto >350 líneas) se desvían a Haiku, que devuelve el resumen.
 - **`CLAUDE_CODE_AUTO_COMPACT_WINDOW=250000`**: con modelos de 1M de contexto, compacta antes en vez de arrastrar cientos de miles de tokens por turno.
-- **Estilo `concisa`**: resultado primero, sin preámbulo ni resumen final; corta la salida de cada respuesta sin tocar el código.
+- **Output style `Concise`** (integrado en Claude Code): resultado primero, sin preámbulo ni resumen final, con recordatorio en cada turno. Corta la salida sin tocar el código.
 - **Statusline**: contexto y límites del plan en vivo. Sin ver el número no se controla.
 - **Subagentes**: un barrido de muchos ficheros hecho por un subagente devuelve solo la conclusión a la conversación principal.
 

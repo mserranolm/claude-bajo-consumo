@@ -43,7 +43,7 @@ if [ -f "$SETTINGS" ]; then
   case "$m" in *1m*) [ "$w" = "no definido" ] && RECS+=("Modelo de 1M sin CLAUDE_CODE_AUTO_COMPACT_WINDOW: la sesión puede arrastrar cientos de miles de tokens por turno antes de compactar.") ;; esac
   os=$(jq -r '.outputStyle // "por defecto"' "$SETTINGS")
   echo "  outputStyle: $os"
-  case "$os" in *oncis*|*aveman*) ;; *) RECS+=("outputStyle '$os': un estilo conciso recorta la salida de cada respuesta. instalar.sh activa 'concisa'.") ;; esac
+  [ "$os" = "Concise" ] || RECS+=("outputStyle '$os': el estilo integrado Concise recorta la salida de cada respuesta. instalar.sh lo activa.")
   sl=$(jq -r 'if .statusLine then "sí" else "no" end' "$SETTINGS")
   echo "  statusLine: $sl"
   [ "$sl" = "no" ] && RECS+=("Sin statusline: no ves contexto ni límites mientras trabajas.")

@@ -17,7 +17,6 @@ done
 
 AQUI="$(cd "$(dirname "$0")" && pwd)"
 SKILL_DIR="$(dirname "$AQUI")"
-PLUGIN_DIR="$(cd "$SKILL_DIR/../.." && pwd)"
 CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
 SETTINGS="$CLAUDE_DIR/settings.json"
 INSTALADOS="$CLAUDE_DIR/plugins/installed_plugins.json"
@@ -53,22 +52,17 @@ if [ "$PLUGINS" = 1 ]; then
   done
 fi
 
-# Sin el plugin bajo-consumo (instalación desde zip o clon), skill y estilo se copian a mano.
+# Estilo integrado de Claude Code: lo mantiene Anthropic y añade un recordatorio por turno.
+ESTILO="Concise"
+
+# Sin el plugin bajo-consumo (instalación desde zip o clon), la skill se copia a mano.
 if instalado "bajo-consumo@claude-bajo-consumo"; then
-  ESTILO="bajo-consumo:concisa"
-  echo "== bajo-consumo instalado como plugin: skill y estilo vienen de ahí"
-else
-  ESTILO="concisa"
-  echo "== Copia local de skill y estilo"
-  if [ "$SKILL_DIR" != "$CLAUDE_DIR/skills/ahorro-tokens" ]; then
-    run mkdir -p "$CLAUDE_DIR/skills"
-    run rm -rf "$CLAUDE_DIR/skills/ahorro-tokens"
-    run cp -R "$SKILL_DIR" "$CLAUDE_DIR/skills/ahorro-tokens"
-  fi
-  if [ -f "$PLUGIN_DIR/output-styles/concisa.md" ] && [ "$PLUGIN_DIR" != "$CLAUDE_DIR" ]; then
-    run mkdir -p "$CLAUDE_DIR/output-styles"
-    run cp "$PLUGIN_DIR/output-styles/concisa.md" "$CLAUDE_DIR/output-styles/concisa.md"
-  fi
+  echo "== bajo-consumo instalado como plugin: la skill viene de ahí"
+elif [ "$SKILL_DIR" != "$CLAUDE_DIR/skills/ahorro-tokens" ]; then
+  echo "== Copia local de la skill"
+  run mkdir -p "$CLAUDE_DIR/skills"
+  run rm -rf "$CLAUDE_DIR/skills/ahorro-tokens"
+  run cp -R "$SKILL_DIR" "$CLAUDE_DIR/skills/ahorro-tokens"
 fi
 
 if [ "$AJUSTES" = 1 ]; then
